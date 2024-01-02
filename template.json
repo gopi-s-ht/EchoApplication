@@ -134,6 +134,20 @@ PS C:\Users\ws_htu374>
                             "priority": 101,
                             "direction": "Inbound"
                         }
+                    },
+                    {
+                        "name": "postgresql_port",
+                        "properties": {
+                            "description": "Allow DB Access",
+                            "protocol": "Tcp",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "5432",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 102,
+                            "direction": "Inbound"
+                        }
                     }
                 ]
             }
