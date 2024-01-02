@@ -224,9 +224,9 @@ PS C:\Users\ws_htu374>
                 },
                 "storageProfile": {
                     "imageReference": {
-                        "publisher": "RedHat",
-                        "offer": "RHEL",
-                        "sku": "8-lvm-gen2",
+                        "publisher": "Canonical",
+                        "offer": "UbuntuServer",
+                        "sku": "16.04-LTS",
                         "version": "latest"
                     },
                     "osDisk": {

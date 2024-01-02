@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmsize": {
-      "value": "Standard_DS1_v2"
+      "value": "Standard_D1_v2"
     },
     "adminuser": {
       "value": "azure"
