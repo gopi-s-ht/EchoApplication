@@ -1,0 +1,82 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
+  "handler": "Microsoft.Azure.CreateUIDef",
+  "version": "0.1.2-preview",
+  "parameters": {
+    "basics": [
+      {}
+    ],
+    "steps": [
+      {
+        "name": "virtualmachine",
+        "label": "Virtual Machine Settings",
+        "elements": [
+          {
+            "name": "vmsize",
+            "type": "Microsoft.Compute.SizeSelector",
+            "label": "Choose VM Size",
+            "toolTip": "Select VM size to deploy the application",
+            "recommendedSizes": [
+              "Standard_D1",
+              "Standard_D2",
+              "Standard_D3"
+            ],
+            "constraints": {
+              "allowedSizes": [
+                "Standard_D1_v2",
+                "Standard_D2_v2",
+                "Standard_D3_v2",
+                "Standard_D4_v2"
+              ],
+              "excludedSizes": [],
+              "numAvailabilityZonesRequired": 1,
+              "zone": "1"
+            },
+            "options": {
+              "hideDiskTypeFilter": false
+            },
+            "osPlatform": "Linux",
+            "imageReference": {
+              "publisher": "Canonical",
+              "offer": "UbuntuServer",
+              "sku": "16.04-LTS"
+            },
+            "count": 1,
+            "visible": true
+          },
+          {
+            "name": "adminusername",
+            "type": "Microsoft.Compute.UserNameTextBox",
+            "label": "Username",
+            "toolTip": "Admin username for the machine",
+            "osPlatform": "Linux",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "adminpassword",
+            "toolTip": "Password for the Virtual Machine.",
+            "type": "Microsoft.Common.PasswordBox",
+            "label": {
+              "confirmPassword": "Confirm password",
+              "password": "Admin Password"
+            },
+            "constraints": {
+              "regex": "^(?=.*[A-Z])(?=.*[.!@#$%^&*()-_=+])(?=.*[0-9])(?=.*[a-z]).{8,40}$",
+              "required": true,
+              "validationMessage": "Password must be between 12-40 characters in length and contain the following: uppercase letter, lowercase letter, number, and one of the following ‘.!@#$%^&*()-_=+’ characters."
+            },
+            "visible": true
+          }
+        ]
+      }
+    ],
+    "outputs": {
+      "adminuser": "[steps('virtualmachine').adminusername]",
+      "adminpassword": "[steps('virtualmachine').adminpassword]",
+      "location": "[location()]",
+      "vmsize": "[steps('virtualmachine').vmsize]"
+    }
+  }
+}
